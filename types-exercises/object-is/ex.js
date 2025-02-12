@@ -1,5 +1,29 @@
 // TODO: define polyfill for `Object.is(..)`
+if (!Object.is || true) {
+	Object.is = function ObjectIs(x,y) {
+        const isXNegZero = isNegZero(x);
+        const isYNegZero = isNegZero(y);
 
+        if(isXNegZero || isYNegZero){
+            return isXNegZero && isYNegZero;
+        } 
+        
+        else if(isNotaNumber(x) && isNotaNumber(y)){
+            return true;
+        }
+        else {
+            return x===y;
+        }
+
+        function isNegZero(value){
+            return value == 0 && (1/value) == -Infinity;
+        }
+
+        function isNotaNumber(value){
+            return value !== value;
+        }
+    };
+}
 
 
 // tests:
