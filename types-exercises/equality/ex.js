@@ -45,7 +45,7 @@ function findAll(match, searchArr) {
       }
     }
   }
-  console.log(coerciveM);
+  
   return coerciveM;
 }
 
